@@ -1,0 +1,34 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# IDE
+.idea/
+*.iml
+.settings/
+.project
+.classpath
+
+# Mac
+.DS_Store
+
+# Upload directories
+src/main/webapp/static/images/products/*
+src/main/webapp/static/images/upload/*
+!src/main/webapp/static/images/products/.gitkeep
+!src/main/webapp/static/images/upload/.gitkeep

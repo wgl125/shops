@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Student Shops</title>
+</head>
+<body>
+    <h1>Welcome to Student Shops</h1>
+    <div id="loginForm">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username" value="admin"><br>
+        <input type="password" id="password" placeholder="Password" value="123456"><br>
+        <button onclick="login()">Login</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerHTML = JSON.stringify(data, null, 2);
+                if(data.code === 200) {
+                    localStorage.setItem('token', data.data.token);
+                }
+            })
+            .catch(error => {
+                document.getElementById('result').innerHTML = 'Error: ' + error;
+            });
+        }
+    </script>
+</body>
+</html>
